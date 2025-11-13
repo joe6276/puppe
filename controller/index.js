@@ -1,5 +1,9 @@
 const puppeteer = require("puppeteer")
 
+const path=require('path')
+const dotenv = require("dotenv")
+
+dotenv.config({path:path.resolve(__dirname, "../.env")})
 // Browser configuration for production
 const getBrowserConfig = () => {
     const config = {
@@ -14,7 +18,9 @@ const getBrowserConfig = () => {
         ]
     };
     
-
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    config.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH
+  }
     return config;
 };
 
@@ -265,12 +271,12 @@ async function scrapeAllPages(startUrl = "https://intl-colt.online", options = {
   }
 }
 
-// async function run() {
-//     console.log("Hello");
+async function run() {
+    console.log("Hello");
     
-//     const response = await scrapeURL("https://intl-colt.online/")
-//     console.log(response);
-// }
+    const response = await scrapeURL("https://intl-colt.online/")
+    console.log(response);
+}
 
 async function getScrapped(req,res) {
 try {
