@@ -1,9 +1,29 @@
 const puppeteer = require("puppeteer")
-
-const path=require('path')
+const fs = require('fs');
+const path = require('path');
 const dotenv = require("dotenv")
 
 dotenv.config({path:path.resolve(__dirname, "../.env")})
+
+
+// Fix Puppeteer permissions
+const puppeteerPath = path.join(__dirname, '.cache/puppeteer');
+if (fs.existsSync(puppeteerPath)) {
+  const chmod = (dir) => {
+    fs.readdirSync(dir).forEach(file => {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        chmod(fullPath);
+      } else {
+        fs.chmodSync(fullPath, 0o755);
+      }
+    });
+  };
+  chmod(puppeteerPath);
+}
+
+
 // Browser configuration for production
 const getBrowserConfig = () => {
     const config = {
