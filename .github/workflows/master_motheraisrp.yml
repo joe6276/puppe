@@ -37,14 +37,10 @@ jobs:
         with:
           name: node-app
           path: |
-            .cache
-            Routes
-            controller
-            node_modules
-            index.js
-            package.json
-            package-lock.json
-            .puppeteerrc.cjs
+            **/*
+            **/.*
+            !.git/**
+            !.github/**
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -79,6 +75,7 @@ jobs:
           package: .
 
           
+
 
 
 
