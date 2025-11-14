@@ -36,8 +36,16 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app
-          path: .
+         name: node-app
+         path: |
+          Routes/
+          controller/
+          node_modules/
+          .cache/
+          .puppeteerrc.cjs
+          index.js
+          package.json
+          package-lock.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -70,4 +78,5 @@ jobs:
           package: .
 
           
+
 
