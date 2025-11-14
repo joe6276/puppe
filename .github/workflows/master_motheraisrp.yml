@@ -55,7 +55,7 @@ jobs:
           name: node-app
           
       - name: List Files
-        run: ls -al
+        run: ls -la node_modules/
 
 
       
@@ -75,6 +75,7 @@ jobs:
           package: .
 
           
+
 
 
 
