@@ -61,6 +61,10 @@ jobs:
           name: node-app
       - name: List Files
         run: ls -al
+
+      # In your deployment job, before running the app
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -78,5 +82,6 @@ jobs:
           package: .
 
           
+
 
 
