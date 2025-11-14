@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npx puppeteer browsers install",
-    "start": "node node_modules/puppeteer/install.js && node index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
