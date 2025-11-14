@@ -59,6 +59,8 @@ jobs:
           else
             echo "WARNING: .cache directory missing!"
           fi
+      - name: list all
+        run: ls -al
         
       - name: Login to Azure
         uses: azure/login@v2
@@ -76,4 +78,5 @@ jobs:
           package: .
 
           
+
 
